@@ -1,20 +1,20 @@
 
 
-#Assignment Instructions
+# Assignment Instructions
 
-1.Code for reading in the dataset and/or processing the data
-2.Histogram of the total number of steps taken each day
-3.Mean and median number of steps taken each day
-4.Time series plot of the average number of steps taken
-5.The 5-minute interval that, on average, contains the maximum number of steps
-6.Code to describe and show a strategy for imputing missing data
-7.Histogram of the total number of steps taken each day after missing values are imputed
-8.Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
-9.All of the R code needed to reproduce the results (numbers, plots, etc.) in the report
+1. Code for reading in the dataset and/or processing the data
+2. Histogram of the total number of steps taken each day
+3. Mean and median number of steps taken each day
+4. Time series plot of the average number of steps taken
+5. The 5-minute interval that, on average, contains the maximum number of steps
+6. Code to describe and show a strategy for imputing missing data
+7. Histogram of the total number of steps taken each day after missing values are imputed
+8. Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
+9. All of the R code needed to reproduce the results (numbers, plots, etc.) in the report
 
 
-##Step 1
-##Code for reading in the dataset and/or processing the data
+## Step 1
+## Code for reading in the dataset and/or processing the data
 ```{r, echo = TRUE}
 rm(list=ls())
 # Download archive file, if it does not exist
@@ -41,8 +41,8 @@ data1 <- na.omit(data)
 
 
 
-##Step 2
-##Histogram of the total number of steps taken each day
+## Step 2
+## Histogram of the total number of steps taken each day
 ```{r, echo = TRUE}
 library(dplyr)
 steps_per_day <- data1 %>% 
@@ -66,16 +66,16 @@ hist(steps_per_day$sumsteps,
 
 ```
 
-##Step 3
-##Mean and median number of steps taken each day
+## Step 3
+## Mean and median number of steps taken each day
 ```{r, echo = TRUE}
 mean_steps <- mean(steps_per_day$sumsteps);mean_steps
 median_steps <- median(steps_per_day$sumsteps);median_steps
 ```
 
 
-##Step 4
-##Time series plot of the average number of steps taken
+## Step 4
+## Time series plot of the average number of steps taken
 ```{r, echo = TRUE}
 stepsPerInterval <- data1 %>% 
                     group_by(interval) %>% 
@@ -95,8 +95,8 @@ plot(stepsPerInterval$meansteps~stepsPerInterval$interval,
 ```
 
 
-##Step 5
-##The 5-minute interval that, on average, contains the maximum number of steps
+## Step 5
+## The 5-minute interval that, on average, contains the maximum number of steps
 ```{r, echo = TRUE}
 
 print(paste("Interval containing the most steps on average: ",stepsPerInterval$interval[stepsPerInterval$meansteps==max(stepsPerInterval$meansteps)]))
@@ -108,7 +108,7 @@ print(paste("Interval containing the most steps on average: ",round(stepsPerInte
 ```
 
 
-##Step 6
+## Step 6
 ```{r, echo = TRUE}
 
 sum(is.na(data$steps))
